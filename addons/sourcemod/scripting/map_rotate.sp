@@ -148,6 +148,12 @@ public void OnConfigsExecuted()
 	g_bPluginManaged = GetConVarBool(g_cPluginManaged);
 	GetConVarString(g_cPluginMaps, g_sPluginMaps, sizeof(g_sPluginMaps));
 	g_bPluginMapsOrder = GetConVarBool(g_cPluginMapsOrder);
+	
+	g_hTimerGameEnd = INVALID_HANDLE;
+	if (g_bPluginEnabled)
+	{
+		CheckPlayerQuota();
+	}
 }
 
 stock void CheckPlayerQuota()
@@ -206,7 +212,7 @@ void MapListLoad()
 	}
 	CloseHandle(h_MapList);
 }
-
+/*
 public void OnMapStart()
 {
 	g_hTimerGameEnd = INVALID_HANDLE;
@@ -215,7 +221,7 @@ public void OnMapStart()
 		CheckPlayerQuota();
 	}
 }
-
+*/
 public void OnClientConnected(int client)
 {
 	if (g_bPluginEnabled)
